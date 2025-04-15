@@ -8,22 +8,22 @@ This extension brings full support for AetherScript development to your favorite
 
 ## 🚀 Features
 
-- 🔍 **Syntax Highlighting**  
+- 🔍 **Syntax Highlighting**
   Full grammar support for `.as` files with rich token classification.
 
-- ✨ **Auto-Completion**  
+- ✨ **Auto-Completion**
   Smart code suggestions for variables, functions, types, and modules.
 
-- 🔧 **Code Formatting**  
+- 🔧 **Code Formatting**
   Format AetherScript code automatically or on save using the official formatter.
 
-- 🛡 **Real-time Diagnostics**  
+- 🛡 **Real-time Diagnostics**
   See syntax and type errors directly in the editor as you code.
 
-- 📚 **Hover Tooltips & Signature Help**  
+- 📚 **Hover Tooltips & Signature Help**
   Get instant documentation and function signatures inline.
 
-- 📦 **Build and Run AetherScript Files**  
+- 📦 **Build and Run AetherScript Files**
   Run or compile `.as` files directly from the editor using Aether Build (if installed).
 
 ---
@@ -76,17 +76,19 @@ Then open the folder in VS Code and run the `Launch Extension` task.
 
 ---
 
-## 📄 License
+### Running and Debugging
 
-This project is licensed under the **Apache License 2.0**.
-
-See [`LICENSE`](./LICENSE) for more details.
+- Press F5 to start debugging
+- This will:
+  - Start the Python language server
+  - Launch a new VS Code window with the extension loaded
+  - Connect to the language server
 
 ---
 
 ## 🤝 Contributing
 
-We welcome contributions!  
+We welcome contributions!
 Please see the [`CONTRIBUTING.md`](./CONTRIBUTING.md) and our [`CODE_OF_CONDUCT.md`](./CODE_OF_CONDUCT.md) before submitting a pull request.
 
 ---
@@ -101,5 +103,11 @@ Please see the [`CONTRIBUTING.md`](./CONTRIBUTING.md) and our [`CODE_OF_CONDUCT.
 
 ## ✨ About
 
-This extension is developed and maintained by **Sky Genesis Enterprise**  
+This extension is developed and maintained by **Sky Genesis Enterprise**
 Our mission is to deliver developer-first tools that are **open, elegant, and efficient**.
+
+## 📄 License
+
+This project is licensed under the **Apache License 2.0**.
+
+See [`LICENSE`](./LICENSE) for more details.
