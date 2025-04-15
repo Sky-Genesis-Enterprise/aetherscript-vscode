@@ -1,0 +1,26 @@
+{
+  "name": "aetherscript-vscode-root",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Root package for AetherScript VS Code Extension",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/aetherscript-vscode"
+  },
+  "author": "AetherScript Contributors",
+  "license": "Apache-2.0",
+  "scripts": {
+    "install:all": "npm run install:client && npm run install:server",
+    "install:client": "cd client && npm install",
+    "install:server": "cd server && pip install -r requirements.txt && pip install -e .",
+    "build": "cd client && npm run compile",
+    "watch": "cd client && npm run watch",
+    "lint": "cd client && npm run lint",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "cd client && vsce package --no-dependencies",
+    "clean": "rimraf client/out client/*.vsix"
+  },
+  "devDependencies": {
+    "rimraf": "^4.0.0"
+  }
+}

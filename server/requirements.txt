@@ -1,0 +1,4 @@
+pygls>=1.0.0
+lsprotocol>=2022.0.0a9
+attrs>=23.1.0
+typing-extensions>=4.5.0

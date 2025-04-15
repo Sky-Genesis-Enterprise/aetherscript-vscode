@@ -1,0 +1,87 @@
+{
+  "name": "aetherscript",
+  "displayName": "AetherScript",
+  "description": "Language support for AetherScript",
+  "version": "0.1.0",
+  "publisher": "aetherscript",
+  "license": "Apache-2.0",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "aetherscript",
+    "language server",
+    "lsp"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "aetherscript",
+        "aliases": [
+          "AetherScript",
+          "aetherscript"
+        ],
+        "extensions": [
+          ".aether"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "aetherscript",
+        "scopeName": "source.aetherscript",
+        "path": "./syntaxes/aetherscript.tmLanguage.json"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "AetherScript",
+      "properties": {
+        "aetherscript.server.path": {
+          "type": "string",
+          "default": "",
+          "description": "Path to the Python executable for the AetherScript language server"
+        },
+        "aetherscript.trace.server": {
+          "type": "string",
+          "enum": [
+            "off",
+            "messages",
+            "verbose"
+          ],
+          "default": "off",
+          "description": "Traces the communication between VS Code and the AetherScript language server"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "aetherscript.restart.server",
+        "title": "AetherScript: Restart Language Server"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^8.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.14.6",
+    "@types/vscode": "^1.75.0",
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "@typescript-eslint/parser": "^5.54.1",
+    "eslint": "^8.35.0",
+    "typescript": "^4.9.5"
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "name": "AetherScript",
+  "scopeName": "source.aetherscript",
+  "fileTypes": ["aether"],
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#functions"
+    },
+    {
+      "include": "#variables"
+    },
+    {
+      "include": "#types"
+    },
+    {
+      "include": "#numerics"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.aetherscript",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.aetherscript",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.aetherscript",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.aetherscript",
+              "match": "\\\\."
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.aetherscript",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            {
+              "name": "constant.character.escape.aetherscript",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.aetherscript",
+          "match": "\\b(if|else|elif|while|for|return|break|continue|function|spell|ritual|conjure|entity|realm|dimension)\\b"
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "name": "entity.name.function.aetherscript",
+          "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\("
+        }
+      ]
+    },
+    "variables": {
+      "patterns": [
+        {
+          "name": "variable.other.aetherscript",
+          "match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b"
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "name": "entity.name.type.aetherscript",
+          "match": "\\b(Void|Int|Float|String|Boolean|Array|Map|Element|Energy|Spirit|Matter)\\b"
+        }
+      ]
+    },
+    "numerics": {
+      "patterns": [
+        {
+          "name": "constant.numeric.integer.aetherscript",
+          "match": "\\b([0-9]+)\\b"
+        },
+        {
+          "name": "constant.numeric.float.aetherscript",
+          "match": "\\b([0-9]*\\.[0-9]+)\\b"
+        },
+        {
+          "name": "constant.numeric.hex.aetherscript",
+          "match": "\\b(0x[0-9a-fA-F]+)\\b"
+        }
+      ]
+    }
+  }
+}

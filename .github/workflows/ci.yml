@@ -1,0 +1,110 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-extension:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+        cache: 'npm'
+        cache-dependency-path: 'client/package.json'
+
+    - name: Install Dependencies
+      run: cd client && npm install
+
+    - name: Lint Extension
+      run: cd client && npm run lint
+
+    - name: Build Extension
+      run: cd client && npm run compile
+
+    - name: Upload Extension Build
+      uses: actions/upload-artifact@v3
+      with:
+        name: extension-build
+        path: client/out
+
+  test-python:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: ['3.8', '3.9', '3.10']
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip'
+        cache-dependency-path: 'server/requirements.txt'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 pytest pytest-cov mypy
+        cd server && pip install -r requirements.txt
+        pip install -e .
+
+    - name: Lint with flake8
+      run: |
+        cd server
+        flake8 aetherscript --count --select=E9,F63,F7,F82 --show-source --statistics
+
+    - name: Type check with mypy
+      run: |
+        cd server
+        mypy aetherscript
+
+    - name: Test with pytest
+      run: |
+        cd server
+        pytest --cov=aetherscript
+
+  package-extension:
+    needs: [build-extension, test-python]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: Install Dependencies
+      run: |
+        npm install -g @vscode/vsce
+        cd client && npm install
+
+    - name: Download Extension Build
+      uses: actions/download-artifact@v3
+      with:
+        name: extension-build
+        path: client/out
+
+    - name: Package Extension
+      run: |
+        cd client
+        vsce package --no-dependencies
+
+    - name: Upload VSIX Package
+      uses: actions/upload-artifact@v3
+      with:
+        name: aetherscript-extension
+        path: client/*.vsix

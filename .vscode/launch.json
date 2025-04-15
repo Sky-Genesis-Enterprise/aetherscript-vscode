@@ -1,0 +1,48 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/client/out/**/*.js"
+      ],
+      "preLaunchTask": "npm: watch"
+    },
+    {
+      "name": "Launch Extension (with Python Debug)",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/client/out/**/*.js"
+      ],
+      "preLaunchTask": "npm: watch",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/server"
+      }
+    },
+    {
+      "name": "Python: Attach to Language Server",
+      "type": "python",
+      "request": "attach",
+      "port": 5678,
+      "host": "localhost"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Extension + Python Debugger",
+      "configurations": [
+        "Launch Extension (with Python Debug)",
+        "Python: Attach to Language Server"
+      ]
+    }
+  ]
+}
