@@ -1,13 +1,13 @@
 {
   "name": "aetherscript-vscode-root",
-  "private": true,
+  "private": false,
   "version": "0.1.0",
   "description": "Root package for AetherScript VS Code Extension",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/aetherscript-vscode"
+    "url": "https://github.com/Sky-Genesis-Enterprise/aetherscript-vscode"
   },
-  "author": "AetherScript Contributors",
+  "author": "Sky Genesis Enterprise",
   "license": "Apache-2.0",
   "scripts": {
     "install:all": "npm run install:client && npm run install:server",
