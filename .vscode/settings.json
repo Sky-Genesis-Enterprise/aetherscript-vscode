@@ -36,7 +36,7 @@
     "editor.tabSize": 2
   },
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.defaultFormatter": "ms-python.python",
     "editor.tabSize": 4
   },
   "[json]": {
